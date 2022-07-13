@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UserVehicleManagement</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="users">Users</string>
+    <string name="roles">Roles</string>
+    <string name="vehicles">Vehicles</string>
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="60dp"
+    tools:context="ui.MainFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/icon_electro_drive_rgb" />
+
+    <Button
+        android:id="@+id/roles_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/roles" />
+
+    <Button
+        android:id="@+id/vehicles_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicles" />
+</LinearLayout>
