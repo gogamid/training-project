@@ -22,6 +22,9 @@ private val retrofit = Retrofit.Builder()
 interface UsersApiService {
     @GET("users")
     suspend fun getUsers(): List<UserRole>
+
+    @GET("vehicles")
+    suspend fun getVehicles(): List<UserVehicle>
 }
 
 object UsersApi {

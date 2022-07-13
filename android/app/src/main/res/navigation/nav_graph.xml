@@ -10,13 +10,24 @@
         <action
             android:id="@+id/action_mainFragment_to_rolesFragment"
             app:destination="@id/rolesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_vehiclesFragment"
+            app:destination="@id/vehiclesFragment" />
     </fragment>
     <fragment
         android:id="@+id/rolesFragment"
         android:name="com.edag.uservehiclemanagement.ui.roles.RolesFragment"
-        android:label="RolesFragment" >
+        android:label="User Roles">
         <action
             android:id="@+id/action_rolesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehiclesFragment"
+        android:name="com.edag.uservehiclemanagement.ui.vehicles.VehiclesFragment"
+        android:label="User Vehicles">
+        <action
+            android:id="@+id/action_vehiclesFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

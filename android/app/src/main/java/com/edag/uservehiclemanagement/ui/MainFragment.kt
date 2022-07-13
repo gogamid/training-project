@@ -20,6 +20,9 @@ class MainFragment : Fragment() {
         binding.rolesButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_rolesFragment)
         }
+        binding.vehiclesButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_vehiclesFragment)
+        }
         return binding.root
     }
 }
