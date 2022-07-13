@@ -4,4 +4,6 @@
     <string name="users">Users</string>
     <string name="roles">Roles</string>
     <string name="vehicles">Vehicles</string>
+    <string name="role">Role</string>
+    <string name="user">User</string>
 </resources>

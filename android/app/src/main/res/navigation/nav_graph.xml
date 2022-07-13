@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.edag.uservehiclemanagement.ui.MainFragment"
-        android:label="@string/users" />
+        android:label="@string/users" >
+        <action
+            android:id="@+id/action_mainFragment_to_rolesFragment"
+            app:destination="@id/rolesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rolesFragment"
+        android:name="com.edag.uservehiclemanagement.ui.roles.RolesFragment"
+        android:label="RolesFragment" >
+        <action
+            android:id="@+id/action_rolesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

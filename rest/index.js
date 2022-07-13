@@ -46,7 +46,7 @@ dbConn.connect(function (err) {
 
 
 app.get("/users", async (req, res) => {
-  const query = "SELECT distinct users.mailadresse, role.UserRole FROM userrolerights natural join users natural join role;";
+  const query = "SELECT distinct users.mailadresse, role.UserRole FROM users natural join role;";
   dbConn.query(query, (err, results) => {
     if (!results) {
       res.json({ status: "Not found!" });
