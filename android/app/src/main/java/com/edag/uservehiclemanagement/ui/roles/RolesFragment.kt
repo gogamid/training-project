@@ -1,14 +1,11 @@
 package com.edag.uservehiclemanagement.ui.roles
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.edag.uservehiclemanagement.R
 import com.edag.uservehiclemanagement.databinding.FragmentRolesBinding
 
 class RolesFragment : Fragment() {

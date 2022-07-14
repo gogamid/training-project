@@ -10,7 +10,7 @@ import com.edag.uservehiclemanagement.databinding.ListViewItem1Binding
 import com.edag.uservehiclemanagement.network.UserVehicle
 
 
-class VehiclesAdapter() :
+class VehiclesAdapter :
     ListAdapter<UserVehicle, VehiclesAdapter.ItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {

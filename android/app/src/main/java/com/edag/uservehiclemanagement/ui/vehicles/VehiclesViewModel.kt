@@ -25,7 +25,7 @@ class VehiclesViewModel : ViewModel() {
         getVehicles()
     }
 
-    fun getVehicles() {
+    private fun getVehicles() {
         viewModelScope.launch {
             _status.value = VehiclesApiStatus.LOADING
             try {

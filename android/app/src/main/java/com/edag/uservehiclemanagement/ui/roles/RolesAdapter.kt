@@ -1,6 +1,5 @@
 package com.edag.uservehiclemanagement.ui.roles
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,7 +9,7 @@ import com.edag.uservehiclemanagement.databinding.ListViewItemBinding
 import com.edag.uservehiclemanagement.network.UserRole
 
 
-class RolesAdapter() :
+class RolesAdapter :
     ListAdapter<UserRole, RolesAdapter.ItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -30,7 +29,6 @@ class RolesAdapter() :
         fun bind(userRole: UserRole) {
             binding.userData = userRole
             binding.executePendingBindings()
-            Log.d("test", "Item ${userRole.userMail} addedd")
         }
     }
 
