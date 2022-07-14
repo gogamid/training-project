@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="60dp"
-        tools:context="ui.MainFragment">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleX="1.4"
-            android:scaleY="1.4"
-            android:layout_marginBottom="130dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/icon_electro_drive_rgb" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/roles_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/roles" />
+            <ImageView
+                android:id="@+id/car_image"
+                android:layout_width="280dp"
+                android:layout_height="100dp"
+                android:layout_margin="130dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/icon_electro_drive_rgb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/vehicles_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/vehicles" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/roles_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="@string/roles"
+                app:layout_constraintEnd_toEndOf="@+id/car_image"
+                app:layout_constraintStart_toStartOf="@+id/car_image"
+                app:layout_constraintTop_toBottomOf="@+id/car_image" />
+
+            <Button
+                android:id="@+id/vehicles_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/vehicles"
+                app:layout_constraintEnd_toEndOf="@+id/car_image"
+                app:layout_constraintStart_toStartOf="@+id/car_image"
+                app:layout_constraintTop_toBottomOf="@+id/roles_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

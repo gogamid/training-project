@@ -11,66 +11,70 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin"
-        tools:context=".ui.roles.RolesFragment">
+        android:layout_height="wrap_content">
 
-
-        <TextView
-            android:id="@+id/user"
-            style="@style/Widget.User.Role"
-            android:layout_marginStart="8dp"
-            android:text="@string/user"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/user_role"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/user_role"
-            style="@style/Widget.User.Role"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
-            android:text="@string/role"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@+id/user"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/divider"
-            style="@style/Divider"
-            android:layout_marginTop="@dimen/margin_between_elements"
-            app:layout_constraintBottom_toTopOf="@+id/roles_recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/roles_recycler_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:listData="@{rolesViewModel.userRoles}" />
+            android:layout_margin="@dimen/margin"
+            tools:context=".ui.roles.RolesFragment">
 
-        <ImageView
-            android:id="@+id/status_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:importantForAccessibility="no"
-            app:apiStatus="@{rolesViewModel.status}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/user"
+                style="@style/Widget.User.Role"
+                android:layout_marginStart="8dp"
+                android:text="@string/user"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/user_role"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/user_role"
+                style="@style/Widget.User.Role"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:text="@string/role"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@+id/user"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider"
+                style="@style/Divider"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                app:layout_constraintBottom_toTopOf="@+id/roles_recycler_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user" />
+
+            <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                app:apiStatus="@{rolesViewModel.status}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/roles_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:listData="@{rolesViewModel.userRoles}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
