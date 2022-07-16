@@ -1,9 +1,11 @@
 package com.edag.uservehiclemanagement
 
 import androidx.car.app.CarContext
-import androidx.car.app.CarToast
 import androidx.car.app.Screen
-import androidx.car.app.model.*
+import androidx.car.app.model.ItemList
+import androidx.car.app.model.ListTemplate
+import androidx.car.app.model.Row
+import androidx.car.app.model.Template
 
 class MainScreen(carContext: CarContext) : Screen(carContext) {
 
@@ -32,7 +34,8 @@ class MainScreen(carContext: CarContext) : Screen(carContext) {
     }
 
     private fun navigateToVehicles() {
-        CarToast.makeText(carContext, "Vehicles screen should show up", CarToast.LENGTH_LONG).show()
+        screenManager.push(VehiclesScreen(carContext))
+
     }
 
     private fun navigateToRoles() {
