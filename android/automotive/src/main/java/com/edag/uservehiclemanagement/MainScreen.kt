@@ -36,7 +36,7 @@ class MainScreen(carContext: CarContext) : Screen(carContext) {
     }
 
     private fun navigateToRoles() {
-        CarToast.makeText(carContext, "Roles screen should show up", CarToast.LENGTH_LONG).show()
+        screenManager.push(RolesScreen(carContext))
     }
 
 }
