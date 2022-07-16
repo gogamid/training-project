@@ -35,19 +35,16 @@ class RolesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycle
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         MainService().getRoles()
-        MainService().getVehicles()
     }
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
         MainService().getRoles()
-        MainService().getVehicles()
     }
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         MainService().getRoles()
-        MainService().getVehicles()
     }
 
     init {
