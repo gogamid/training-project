@@ -9,7 +9,8 @@ import androidx.car.app.Screen
 import androidx.car.app.Session
 import androidx.car.app.validation.HostValidator
 import androidx.lifecycle.MutableLiveData
-import com.edag.uservehiclemanagement.MainService.Data.status
+import com.edag.uservehiclemanagement.MainService.Data.rolesStatus
+import com.edag.uservehiclemanagement.MainService.Data.vehiclesStatus
 import com.edag.uservehiclemanagement.network.UserRole
 import com.edag.uservehiclemanagement.network.UserVehicle
 import com.edag.uservehiclemanagement.network.UsersApi
@@ -19,11 +20,13 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 enum class RolesApiStatus { LOADING, ERROR, DONE }
+enum class VehiclesApiStatus { LOADING, ERROR, DONE }
 class MainService : CarAppService() {
     object Data {
         var userRoles = listOf<UserRole>()
         var userVehicles = listOf<UserVehicle>()
-        var status = MutableLiveData<RolesApiStatus>()
+        var rolesStatus = MutableLiveData<RolesApiStatus>()
+        var vehiclesStatus = MutableLiveData<VehiclesApiStatus>()
 
     }
 
@@ -53,12 +56,12 @@ class MainService : CarAppService() {
 
     fun getRoles() {
         serviceScope.launch {
-            status.value = RolesApiStatus.LOADING
+            rolesStatus.value = RolesApiStatus.LOADING
             try {
                 Data.userRoles = UsersApi.retrofitService.getUsers()
-                status.value = RolesApiStatus.DONE
+                rolesStatus.value = RolesApiStatus.DONE
             } catch (e: Exception) {
-                status.value = RolesApiStatus.ERROR
+                rolesStatus.value = RolesApiStatus.ERROR
                 Data.userRoles = listOf()
             }
 
@@ -67,15 +70,15 @@ class MainService : CarAppService() {
 
     fun getVehicles() {
         serviceScope.launch {
-            //loading screen
+            vehiclesStatus.value = VehiclesApiStatus.LOADING
             try {
                 Data.userVehicles = UsersApi.retrofitService.getVehicles()
+                vehiclesStatus.value = VehiclesApiStatus.DONE
+
             } catch (e: Exception) {
-                //error sign
+                vehiclesStatus.value = VehiclesApiStatus.ERROR
                 Data.userVehicles = listOf()
             }
-
-
         }
     }
 

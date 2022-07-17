@@ -9,7 +9,7 @@ import androidx.car.app.model.Row
 import androidx.car.app.model.Template
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.edag.uservehiclemanagement.MainService.Data.status
+import com.edag.uservehiclemanagement.MainService.Data.rolesStatus
 import com.edag.uservehiclemanagement.MainService.Data.userRoles
 
 
@@ -18,7 +18,7 @@ class RolesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycle
 
         val paneBuilder = Pane.Builder()
 
-        when (status.value) {
+        when (rolesStatus.value) {
             RolesApiStatus.LOADING -> paneBuilder.setLoading(true)
             RolesApiStatus.ERROR -> {
                 paneBuilder.addRow(
@@ -55,9 +55,7 @@ class RolesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycle
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
-        status.observe(this) {
-            invalidate()
-        }
+        rolesStatus.observe(this) { invalidate() }
         MainService().getRoles()
     }
 

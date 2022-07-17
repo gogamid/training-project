@@ -6,6 +6,7 @@ import androidx.car.app.model.*
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.edag.uservehiclemanagement.MainService.Data.userVehicles
+import com.edag.uservehiclemanagement.MainService.Data.vehiclesStatus
 
 class VehiclesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycleObserver {
     override fun onCreate(owner: LifecycleOwner) {
@@ -20,24 +21,37 @@ class VehiclesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecy
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
+        vehiclesStatus.observe(this) { invalidate() }
         MainService().getVehicles()
+
     }
 
     override fun onGetTemplate(): Template {
-        val listBuilder = ItemList.Builder()
 
-        userVehicles.forEach {
-            val row = Row.Builder()
-                .setTitle(it.userMail)
-                .addText(it.vehicle)
-                .build()
-            listBuilder.addItem(row)
+        val paneBuilder = Pane.Builder()
+
+        when (vehiclesStatus.value) {
+            VehiclesApiStatus.LOADING -> paneBuilder.setLoading(true)
+            VehiclesApiStatus.ERROR -> {
+                paneBuilder.addRow(
+                    Row.Builder().setTitle("Network Error!").build()
+                )
+            }
+
+            else -> {
+               userVehicles.forEach {
+                    val row = Row.Builder()
+                        .setTitle(it.userMail)
+                        .addText(it.vehicle)
+                        .build()
+                    paneBuilder.addRow(row)
+                }
+            }
         }
 
-        return ListTemplate.Builder()
+        return PaneTemplate.Builder(paneBuilder.build())
             .setTitle("User Vehicles")
             .setHeaderAction(Action.BACK)
-            .setSingleList(listBuilder.build())
             .build()
     }
 
