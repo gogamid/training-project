@@ -3,32 +3,43 @@ package com.edag.uservehiclemanagement
 import androidx.car.app.CarContext
 import androidx.car.app.Screen
 import androidx.car.app.model.Action.BACK
-import androidx.car.app.model.ItemList
-import androidx.car.app.model.ListTemplate
+import androidx.car.app.model.Pane
+import androidx.car.app.model.PaneTemplate
 import androidx.car.app.model.Row
 import androidx.car.app.model.Template
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.edag.uservehiclemanagement.MainService.Data.status
 import com.edag.uservehiclemanagement.MainService.Data.userRoles
 
 
 class RolesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycleObserver {
     override fun onGetTemplate(): Template {
 
-        val listBuilder = ItemList.Builder()
+        val paneBuilder = Pane.Builder()
 
-        userRoles.forEach {
-            val row = Row.Builder()
-                .setTitle(it.userMail)
-                .addText(it.userRole)
-                .build()
-            listBuilder.addItem(row)
+        when (status.value) {
+            RolesApiStatus.LOADING -> paneBuilder.setLoading(true)
+            RolesApiStatus.ERROR -> {
+                paneBuilder.addRow(
+                    Row.Builder().setTitle("Network Error!").build()
+                )
+            }
+
+            else -> {
+                userRoles.forEach {
+                    val row = Row.Builder()
+                        .setTitle(it.userMail)
+                        .addText(it.userRole)
+                        .build()
+                    paneBuilder.addRow(row)
+                }
+            }
         }
 
-        return ListTemplate.Builder()
+        return PaneTemplate.Builder(paneBuilder.build())
             .setTitle("User Roles")
             .setHeaderAction(BACK)
-            .setSingleList(listBuilder.build())
             .build()
     }
 
@@ -44,6 +55,9 @@ class RolesScreen(carContext: CarContext) : Screen(carContext), DefaultLifecycle
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
+        status.observe(this) {
+            invalidate()
+        }
         MainService().getRoles()
     }
 
